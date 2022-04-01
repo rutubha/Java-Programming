@@ -1,0 +1,73 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Exercise_17_1 {
+    public static void main(String[] args) throws FileNotFoundException{
+
+        //Create arrayList
+        ArrayList<String> list = new ArrayList<>();
+
+        //Create File object
+        File file = new File("Exercise_17_1.txt");
+
+        //   Check if file Exists
+        if(file.exists()) {
+            try (
+                Scanner input = new Scanner(file);
+            ) {
+                while(input.hasNextLine()) {
+                    list.add(input.nextLine());
+                }
+            }
+        }
+
+        //Generate Integer
+        for(int i = 0; i < 100; i++) {
+            list.add((int)(Math.random() * 100) + " ");
+        }
+
+        //write into file
+        try (
+            PrintWriter output = new PrintWriter(file);
+        ) {
+            for(String l : list) {
+                output.write(l);
+            }
+        }
+    }
+}import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+class Exercise_17_2 {
+    public static void main(String[] args) throws IOException {
+        try (
+                FileOutputStream output = new FileOutputStream("Exercise_17_2.dat");) {
+            for (int i = 0; i < 100; i++) {
+                output.write((int) (i));
+            }
+        }
+
+        try {
+            try (
+                    FileInputStream input = new FileInputStream("Exercise_17_2.dat");) {
+                        int count = 0;
+                while (true) {
+                    int r = input.read();
+                    if(r == -1) {
+                        break;
+                    }
+                    System.out.print(r + " ");
+                    count++;
+                }
+
+                System.out.println("Number " + count);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}

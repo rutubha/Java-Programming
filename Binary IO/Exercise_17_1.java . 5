@@ -1,0 +1,10 @@
+      //write into file
+        try (
+            PrintWriter output = new PrintWriter(file);
+        ) {
+            for(String l : list) {
+                output.write(l);
+            }
+        }
+    }
+}

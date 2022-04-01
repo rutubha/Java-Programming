@@ -1,0 +1,9 @@
+) throws FileNotFoundException{
+
+        //Create arrayList
+        ArrayList<String> list = new ArrayList<>();
+
+        //Create File object
+        File file = new File("Exercise_17_1.txt");
+
+        //

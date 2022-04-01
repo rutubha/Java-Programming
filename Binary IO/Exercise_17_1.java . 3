@@ -1,0 +1,7 @@
+   Check if file Exists
+        if(file.exists()) {
+            try (
+                Scanner input = new Scanner(file);
+            ) {
+                while(input.hasNextLine()) {
+                    list
